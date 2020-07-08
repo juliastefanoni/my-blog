@@ -3,30 +3,39 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import Avatar from '../Avatar';
 
+import * as STD from './styled';
+
 const Profile = () => {
   const { 
     site: { 
-      siteMetadata : { title, position, description }
+      siteMetadata : { author, position, description }
     },
   } = useStaticQuery(graphql`
     query MySiteMetadata {
       site {
         siteMetadata {
-          title
           description
           position
+          author
         }
       }
     }
   `);
 
   return (
-    <div className="Profile-wrapper">
-      <Avatar />
-      <h1> {title} </h1>
-      <h2> {position} </h2>
-      <p> {description} </p>
-    </div>
+    <STD.ProfileWrapper>
+      <STD.ProfileLink>
+        <Avatar />
+
+        <STD.ProfileAuthor> 
+          {author} 
+          <STD.ProfilePosition> {position} </STD.ProfilePosition>
+        </STD.ProfileAuthor>
+
+      </STD.ProfileLink>
+
+        <STD.ProfileDescription> {description} </STD.ProfileDescription>
+    </STD.ProfileWrapper>
   );
 }
 
