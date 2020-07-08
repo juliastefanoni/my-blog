@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `My blog`,
+    position: `Fullstack developer`,
     description: `A blog about frontend development and other coll stuff`,
     author: `@myblog`,
   },
@@ -24,7 +25,6 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: ``, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
