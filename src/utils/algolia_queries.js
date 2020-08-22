@@ -35,7 +35,7 @@ const queries = [
   {
     query: postsQuery,
     transformer: ({ data }) => flatten(data.posts.edges), // optional
-    indexName: 'posts', 
+    indexName: 'prod_POSTS', 
     settings: {
       attributesToSnippet: ['excerpet:20']
     },
