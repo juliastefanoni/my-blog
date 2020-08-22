@@ -1,10 +1,12 @@
 import styled from "styled-components"
-import { Link } from "gatsby"
+import media from 'styled-media-query';
+
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const MenuBarWrapper = styled.aside`
   align-items: center;
-  background: #192734;
-  border-left: 1px solid #38444d;
+  background: var(--mediumBackground);
+  border-left: 1px solid var(--borders);
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -13,19 +15,39 @@ export const MenuBarWrapper = styled.aside`
   position: fixed;
   right: 0;
   width: 3.75rem;
+
+  ${media.lessThan("large")`
+  border-top: 1px solid var(--borders);
+  bottom: 0;
+  flex-direction: row;
+  height: auto;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+`}
 `
 
 export const MenuBarGroup = styled.div`
   display: flex;
   flex-direction: column;
+
+  ${media.lessThan("large")`
+    flex-direction: row;
+  `}
 `
 
-export const MenuBarLink = styled(Link)`
+export const MenuBarLink = styled(AniLink)`
   display: block;
+
+  &.active {
+    span {
+      color: var(--highlight);
+    }
+  }
 `
 
 export const MenuBarItem = styled.span`
-  color: #8899a6;
+  color: var(--texts);
   cursor: pointer;
   display: block;
   height: 3.75rem;
@@ -33,6 +55,31 @@ export const MenuBarItem = styled.span`
   position: relative;
   width: 3.75rem;
   &:hover {
-    color: #1fa1f2;
+    color: var(--highlight);
   }
+
+  &.light {
+    color: #d4d400;
+
+    &:hover {
+      color: #e2e240;
+    }
+  }
+
+  &.display {
+    ${media.lessThan("large")`
+      display: none;
+    `}
+  }
+  ${media.greaterThan("large")`
+    &:hover {
+      color: var(--highlight);
+    }
+  `}
+  ${media.lessThan("large")`
+    height: 3.2rem;
+    padding: .9rem;
+    position: relative;
+    width: 3.2rem;
+  `}
 `
