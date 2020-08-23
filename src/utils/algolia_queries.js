@@ -42,4 +42,16 @@ const queries = [
   },
 ];
 
+// const queries_DEV = [
+//   {
+//     query: postsQuery,
+//     transformer: ({ data }) => flatten(data.posts.edges), // optional
+//     indexName: 'dev_POSTS', 
+//     settings: {
+//       attributesToSnippet: ['excerpet:20']
+//     },
+//   },
+// ];
+
 module.exports = queries;
+// module.exports = queries_DEV;

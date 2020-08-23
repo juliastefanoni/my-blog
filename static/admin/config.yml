@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: juliastefanoni/my-blog
+  branch: master 
+  site_domain: juliastefanoni.netlify.app
+  
+publish_mode: editorial_workflow
+media_folder: "static/assets/img"
+public_folder: "assets/img"
+
+collections:
+  - name: "posts" # Used in routes, e.g., /admin/collections/blog
+    label: "Posts" # Used in the UI
+    folder: "posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", format: 'YYYY-MM-DD hh:mm:ss'}
+      - {label: "image", name: "thumbnail", widget: "image"}
+      - {
+        label: "Category",
+        name: "category",
+        widget: "select",
+        options: ["css", "js", "html", "react", "dev", "misc", "node","tools"]
+      }
+      - {
+        label: "Background",
+        name: "background",
+        widget: "select",
+        options: [
+          { label: "Css", value: "#4b80a3"},
+          { label: "Javascript", value: "#c5c769"},
+          { label: "HTML", value: "#3a26d4"},
+          { label: "React", value: "#995791"},
+          { label: "DEV", value: "#56b088"},
+          { label: "MISC", value: "#a45acc"},
+          { label: "Node", value: "#1f5c08"},
+          { label: "Tools", value: "#c99d9b"}
+        ]
+      }
+      - {label: "Body", name: "body", widget: "markdown"}
